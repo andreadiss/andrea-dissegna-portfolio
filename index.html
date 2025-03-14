@@ -274,6 +274,15 @@
       margin: 1.5rem 0;
       border-radius: 4px;
     }
+    .project-section .image-placeholder img, .project-section .image-placeholder video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    .project-section .image-placeholder .resized {
+      width: 25%; /* Reduce bar chart to 1/4 size */
+    }
     .project-section .statistics {
       display: flex;
       justify-content: center;
@@ -347,6 +356,13 @@
     }
     .project-section .quote-green {
       background: #ccffcc;
+    }
+    .project-section .caption {
+      text-align: center;
+      font-style: italic;
+      color: #666;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
     }
 
     /* Responsive */
@@ -599,16 +615,8 @@
           <div class="project-section">
             <h4>Methodology</h4>
             <ul>
-              <li>In-depth interviews
-                <div style="text-align: right; display: inline-block;">
-                  <div class="image-placeholder" style="display: inline-block;">[Placeholder for Lookback screenshot]</div>
-                </div>
-              </li>
-              <li>Moderated usability test
-                <div style="text-align: right; display: inline-block;">
-                  <div class="image-placeholder" style="display: inline-block;">[Placeholder for Miro logo]</div>
-                </div>
-              </li>
+              <li>In-depth interviews</li>
+              <li>Moderated usability test</li>
             </ul>
           </div>
           <div class="project-section">
@@ -622,7 +630,8 @@
               <span>Tools:</span> Python + Hugging Face (NLP) + Inkscape
             </div>
             <div class="image-placeholder">
-              [Placeholder for Journey Map diagram showing stages: Login, Set Location, Set Filters, Choose Restaurant, Select the Food, Set Delivery Time, with sentiment analysis dots (green for positive, red for negative)]
+              <img src="images/journey_map.png" alt="Journey Map diagram showing stages: Login, Set Location, Set Filters, Choose Restaurant, Select the Food, Set Delivery Time, with sentiment analysis dots">
+              <p class="caption">The journey map obtained from the sentiment analysis</p>
             </div>
             <div class="quotes">
               <div class="quote-yellow">"I'm looking for the login, which is usually top right, and there it is."</div>
@@ -636,7 +645,7 @@
             <div class="project-section">
               <h4>Actionables</h4>
               <p>Simplifying the transition between login and the main page: Implement a login pop-up that does not replace the entire page but instead overlays the underlying content. Ensure the pop-up displays only the essential fields for login, simplifying the interface while keeping the location selection bar visible on the main screen.</p>
-              <p> </p> <!-- Added space after the last line -->
+              <p> </p>
             </div>
           </div>
         </div>
@@ -662,7 +671,8 @@
               <li>A/B testing</li>
             </ul>
             <div class="image-placeholder">
-              [Placeholder for VR environment screenshot (virtual corridor of a cruise ship)]
+              <img src="images/Media1.gif" alt="VR Immersion in a ship prototype">
+              <p class="caption">VR Immersion in a ship prototype</p>
             </div>
           </div>
           <div class="project-section">
@@ -678,7 +688,8 @@
             <p>Analysis with a logistic model (binomial data error detected / error missed).</p>
             <p>Results show that VR can significantly enhance the detection of design errors, reducing the number of misreported errors.</p>
             <div class="image-placeholder">
-              [Placeholder for bar chart comparing error percentages (2D, 3D, VR active, VR passive)]
+              <img src="images/bar_chart.png" alt="Bar chart comparing error percentages (2D, 3D, VR active, VR passive)" class="resized">
+              <p class="caption">After our intervention, VR proved to be more efficient, with fewer design errors going unnoticed.</p>
             </div>
           </div>
         </div>
@@ -753,7 +764,7 @@
           <div class="project-section">
             <h4>Actionables</h4>
             <p>Targeted communication interventions should clarify the importance of repeating the test after a negative result, especially in high-prevalence contexts.</p>
-            <p> </p> <!-- Added space at the end -->
+            <p> </p>
           </div>
         </div>
       </div>
