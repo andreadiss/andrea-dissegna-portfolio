@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Andrea Dissegna – UX Research Portfolio</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap">
+  <style>
+    :root {
+      --bg: #F5F7FA;
+      --text: #1A1A1A;
+      --primary: #00D4FF;
+      --secondary: #007BFF;
+      --neutral: #E0E4E8;
+      --accent: #FF4081;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a {
+      text-decoration: none;
+      color: var(--secondary);
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: var(--primary);
+    }
+    h1, h2, h3, h4, h5 {
+      font-weight: 800;
+    }
+    p {
+      font-weight: 400;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      padding: 1.5rem 2rem;
+      z-index: 100;
+      border-bottom: 1px solid var(--neutral);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+    .header-text {
+      text-align: center;
+    }
+    .header-text h1 {
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text);
+    }
+    .header-text .role {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--secondary);
+      margin-top: 0.5rem;
+    }
+    .header-text .email {
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-top: 0.25rem;
+    }
+
+    /* Main */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+    section {
+      margin-bottom: 5rem;
+      position: relative;
+    }
+    h2 {
+      font-size: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--secondary);
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    h2::after {
+      content: '';
+      width: 50px;
+      height: 3px;
+      background: var(--primary);
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+    }
+
+    /* Domains */
+    .domains-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .tab-item {
+      padding: 0.5rem 1rem;
+      background: var(--neutral);
+      border-radius: 6px;
+      text-align: center;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: all 0.2s ease;
+    }
+    .tab-item:hover, .tab-item.active {
+      background: var(--secondary);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+      transform: scale(1.05);
+    }
+    .domain-content {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .domain-section {
+      display: none;
+    }
+    .domain-section.active {
+      display: block;
+    }
+    .domain-section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+    .domain-section p {
+      margin-bottom: 0.75rem;
+      display: block;
+      color: var(--text);
+    }
+    .domain-section .accent {
+      color: var(--accent, #FF4081);
+      font-weight: 600;
+    }
+
+    /* Research Flow */
+    .flow-container {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      position: relative;
+      z-index: 1;
+    }
+    .flow-step {
+      padding: 0.75rem 1rem;
+      background: var(--neutral);
+      border-radius: 6px;
+      text-align: center;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: all 0.2s ease;
+      min-width: 160px;
+      max-width: 200px;
+    }
+    .flow-step:hover, .flow-step.active {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+      transform: scale(1.05);
+    }
+    .flow-step h3 {
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+      text-transform: uppercase;
+      white-space: normal;
+      word-wrap: break-word;
+    }
+    .flow-step .details {
+      display: none;
+      padding-top: 0.25rem;
+      font-size: 0.75rem;
+      color: var(--text);
+    }
+    .flow-step.active .details {
+      display: block;
+      color: #fff;
+    }
+    .flow-step .details ul li {
+      white-space: normal;
+      word-wrap: break-word;
+    }
+
+    /* Projects */
+    .project {
+      background: #fff;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+    .project:hover {
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+    .project-header {
+      padding: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--neutral);
+    }
+    .project-header h3 {
+      font-size: 1.4rem;
+      color: var(--text);
+    }
+    .toggle-icon {
+      font-size: 1.5rem;
+      color: var(--secondary);
+      transition: transform 0.3s ease;
+    }
+    .project-header.active .toggle-icon {
+      transform: rotate(45deg);
+      color: var(--primary);
+    }
+    .project-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      padding: 0 1.5rem;
+    }
+    .project-content.active {
+      padding: 1.5rem;
+      max-height: 1500px;
+    }
+    .project-section h4 {
+      font-size: 1.1rem;
+      color: var(--secondary);
+      margin-bottom: 0.5rem;
+    }
+    .project-section h5 {
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .project-section p {
+      margin-bottom: 1.5rem;
+      line-height: 1.2; /* Reduced space between lines for all paragraphs */
+    }
+    .project-section ul {
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .project-section .image-placeholder {
+      background: #f0f0f0;
+      padding: 1rem;
+      text-align: center;
+      margin: 1.5rem 0;
+      border-radius: 4px;
+    }
+    .project-section .statistics {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .project-section .statistics div {
+      background: var(--secondary);
+      color: #fff;
+      padding: 1rem;
+      border-radius: 50%;
+      text-align: center;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 0.8rem;
+      line-height: 1.2;
+      white-space: normal;
+      word-wrap: break-word;
+    }
+    .project-section .user-types {
+      display: flex;
+      gap: 2rem;
+      margin: 1.5rem 0;
+    }
+    .project-section .user-types div {
+      flex: 1;
+    }
+    .project-section .user-types p {
+      line-height: 1.2; /* Reduced space between lines for user types */
+    }
+    .project-section .material-prep {
+      display: flex;
+      gap: 2rem;
+      margin: 1.5rem 0;
+    }
+    .project-section .material-prep div {
+      flex: 1;
+    }
+    .project-section .tools {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin: 1.5rem 0;
+    }
+    .project-section .tools span {
+      font-weight: 600;
+    }
+    .project-section .quotes {
+      display: flex;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .project-section .quotes div {
+      padding: 1rem;
+      border-radius: 4px;
+      font-style: italic;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .project-section .quote-yellow {
+      background: #fff9c4;
+    }
+    .project-section .quote-pink {
+      background: #ffcccc;
+    }
+    .project-section .quote-green {
+      background: #ccffcc;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header {
+        padding: 1rem;
+      }
+      .header-text h1 {
+        font-size: 2rem;
+      }
+      .header-text .role {
+        font-size: 0.9rem;
+      }
+      .header-text .email {
+        font-size: 0.8rem;
+      }
+      main {
+        padding: 2rem 1rem;
+      }
+      .domains-tabs {
+        flex-direction: column;
+        align-items: center;
+      }
+      .flow-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .flow-step {
+        min-width: 100%;
+        max-width: 100%;
+      }
+      .domain-content {
+        max-width: 100%;
+      }
+      .project-section .user-types,
+      .project-section .material-prep {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .project-section .statistics div {
+        width: 100px;
+        height: 100px;
+        font-size: 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-text">
+      <h1>Andrea Dissegna</h1>
+      <div class="role">Mixed-Method Researcher</div>
+      <div class="email">andreadissegna@gmail.com</div>
+    </div>
+  </header>
+
+  <main>
+    <section id="domains">
+      <h2>Areas of Specialization</h2>
+      <div class="domains-tabs">
+        <div class="tab-item active" data-target="cognitive-science">Cognitive Science</div>
+        <div class="tab-item" data-target="research-management">Research Management</div>
+        <div class="tab-item" data-target="mixed-methods">Mixed-methods</div>
+        <div class="tab-item" data-target="psychometrics">Psychometrics</div>
+        <div class="tab-item" data-target="insights-actionables">Insights & Actionables</div>
+      </div>
+      <div class="domain-content">
+        <div class="domain-section active" id="cognitive-science">
+          <h3>Cognitive Science</h3>
+          <p><span class="accent">Generative Research:</span> Definition of actionable research questions</p>
+          <p><span class="accent">Insights:</span> Deep knowledge of cognitive processes involved in human-systems interaction</p>
+          <p><span class="accent">Actionables:</span> Achieve solutions grounded in cognitive principles</p>
+        </div>
+        <div class="domain-section" id="research-management">
+          <h3>Research Management</h3>
+          <p><span class="accent">Evaluative Research:</span> Planning and management of the research process to test current solutions</p>
+          <p><span class="accent">Insights:</span> Defining research priorities, research phases, methods, analysis, and process monitoring</p>
+          <p><span class="accent">Actionables:</span> Achieve actionable and valid solutions</p>
+        </div>
+        <div class="domain-section" id="mixed-methods">
+          <h3>Mixed-methods</h3>
+          <p><span class="accent">Script Writing & Questionnaires + Prompt Engineering</span></p>
+          <p><span class="accent">Insights:</span> Deep knowledge of strengths and weaknesses of qualitative/quantitative research techniques</p>
+          <p><span class="accent">Bias Minimization:</span> Deep knowledge of the main biases of qualitative/quantitative techniques and analysis and how to control them</p>
+          <p><span class="accent">Actionables:</span> Application of the appropriate research methods based on the research goals</p>
+        </div>
+        <div class="domain-section" id="psychometrics">
+          <h3>Psychometrics</h3>
+          <p><span class="accent">Statistics:</span> Deep knowledge of statistics to analyze behavioral data (linear models, logistic regressions, cluster analysis)</p>
+          <p><span class="accent">Psychometrics:</span> Deep knowledge of psychometric properties of questionnaires, how to validate them</p>
+          <p><span class="accent">Coding:</span> R, Python, Excel</p>
+        </div>
+        <div class="domain-section" id="insights-actionables">
+          <h3>Insights & Actionables</h3>
+          <p><span class="accent">Reporting:</span> Creating presentations and reports for stakeholders, both technical and non-technical</p>
+          <p><span class="accent">Actionables:</span> Emphasis on evidence-based results and valid, actionable solutions</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="research-flow">
+      <h2>Research Flow</h2>
+      <div class="flow-container">
+        <div class="flow-step active" data-step="1">
+          <h3>Stakeholders</h3>
+          <div class="details">
+            <ul>
+              <li>Companies, ngos, institutions</li>
+            </ul>
+          </div>
+        </div>
+        <div class="flow-step" data-step="2">
+          <h3>Kick Off</h3>
+          <div class="details">
+            <p>Early planning of:</p>
+            <ul>
+              <li>Goals</li>
+              <li>Methods</li>
+              <li>Participant recruitment</li>
+              <li>Analysis</li>
+              <li>Deliverables</li>
+            </ul>
+          </div>
+        </div>
+        <div class="flow-step" data-step="3">
+          <h3>Secondary Research</h3>
+          <div class="details">
+            <ul>
+              <li>State of the art review</li>
+              <li>Material preparation</li>
+              <li>Prompt engineering to create discussion guides</li>
+            </ul>
+          </div>
+        </div>
+        <div class="flow-step" data-step="4">
+          <h3>Primary Qualitative</h3>
+          <div class="details">
+            <ul>
+              <li>Interview, enquiry, usability test</li>
+              <li>Affinity diagram, nlp</li>
+            </ul>
+          </div>
+        </div>
+        <div class="flow-step" data-step="5">
+          <h3>Primary Quantitative</h3>
+          <div class="details">
+            <ul>
+              <li>Surveys, questionnaires, behavioral experiment, eye-tracker</li>
+              <li>Statistics (r, python)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="flow-step" data-step="6">
+          <h3>Deliverables</h3>
+          <div class="details">
+            <ul>
+              <li>Technical and non-technical presentations and reports</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="project">
+        <div class="project-header">
+          <h3>Qualitative project: usability of a food delivery app & sentiment analysis</h3>
+          <span class="toggle-icon">+</span>
+        </div>
+        <div class="project-content">
+          <div class="project-section">
+            <h4>Context</h4>
+            <p>The start up has developed the prototype of a platform similar to Skyscanner but for food delivery, which allows users to find the best offers (prices, delivery times, etc.).</p>
+          </div>
+          <div class="project-section">
+            <h4>Objective</h4>
+            <p>Identify the missing or problematic functionalities that influence the user experience of their website.</p>
+          </div>
+          <div class="project-section">
+            <h4>Secondary Research</h4>
+            <div class="statistics">
+              <div>72% of users are under 44 years old</div>
+              <div>61% convenience</div>
+              <div>59% digital payments</div>
+              <div>40% flexibility</div>
+              <div>65% of Gen Z orders food online because it’s economical</div>
+            </div>
+          </div>
+          <div class="project-section">
+            <h4>User Types</h4>
+            <div class="user-types">
+              <div>
+                <h5>Young Urban Professional</h5>
+                <p><strong>Age:</strong> 25–35 years</p>
+                <p><strong>Characteristics:</strong> Lives in the city, has a career with intense working hours.</p>
+                <p><strong>Needs:</strong> Seeks options for quick and practical meals, prefers to avoid cooking after a workday.</p>
+                <p><strong>Habits:</strong> Uses the app to order food, often during dinner, trying different cuisines.</p>
+                <p><strong>Values:</strong> Convenience, variety of choices, ability to personalize orders.</p>
+              </div>
+              <div>
+                <h5>Gen Z Student</h5>
+                <p><strong>Age:</strong> 18–24 years</p>
+                <p><strong>Characteristics:</strong> University student or young adult, often on a limited budget.</p>
+                <p><strong>Needs:</strong> Desires fast and economical meals, ideal for a dynamic social life or studying.</p>
+                <p><strong>Habits:</strong> Uses the app for shared meals with friends or quick meals, attracted by promotions, discounts, and programs.</p>
+                <p><strong>Values:</strong> Affordable prices, simplicity in ordering, ability to pay digitally.</p>
+              </div>
+            </div>
+          </div>
+          <div class="project-section">
+            <h4>Material Preparation</h4>
+            <p>This is an example of prompt review to create a bias-free discussion guide for the interview.</p>
+            <div class="material-prep">
+              <div>
+                <h5>Process</h5>
+                <ol>
+                  <li>
+                    <em>Initial Prompt:</em>
+                    <p><strong style="color: #0000FF;">Context:</strong> Imagine you are a UX researcher. You must interview two user groups: young urban professionals (25–35 years) and Gen Z students (18–24 years). <strong style="color: #008000;">Task:</strong> Create a list of 10 open-ended questions, focusing on the use of a food delivery app that is clear and neutral, suitable for both groups. <strong style="color: #800080;">Tone:</strong> Maintain a neutral and professional tone.</p>
+                  </li>
+                  <li>
+                    <em>Initial Output (low quality):</em>
+                    <p><em>"How often do you use food delivery apps, and what are your main needs or expectations?"</em></p>
+                    <p>This output question combines two distinct inquiries, making it harder for respondents to provide focused answers and for researchers to analyze responses effectively.</p>
+                  </li>
+                  <li>
+                    <em>Prompt Revision:</em>
+                    <p>Generate a list of 10 single open-ended questions [...]</p>
+                    <p>Questions will:</p>
+                    <ul>
+                      <li>Explore use context, motivations, expectations, and pain points.</li>
+                      <li>Investigate the frequency of use of food delivery apps.</li>
+                      <li>Identify factors influencing users' choice of the food delivery app to use.</li>
+                      <li>Allow the interviewer to notice differences between the two users profiles.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <em>Revised Output:</em>
+                    <ul>
+                      <li>"How often do you use food delivery apps?"</li>
+                      <li>"In what situations do you use food delivery apps?"</li>
+                      <li>"What are the main reasons you choose a particular app over others?"</li>
+                    </ul>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="project-section">
+            <h4>Methodology</h4>
+            <ul>
+              <li>In-depth interviews
+                <div style="text-align: right; display: inline-block;">
+                  <div class="image-placeholder" style="display: inline-block;">[Placeholder for Lookback screenshot]</div>
+                </div>
+              </li>
+              <li>Moderated usability test
+                <div style="text-align: right; display: inline-block;">
+                  <div class="image-placeholder" style="display: inline-block;">[Placeholder for Miro logo]</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="project-section">
+            <h4>Analysis</h4>
+            <ul>
+              <li>Affinity diagram</li>
+              <li>Sentiment analysis (per journey map)</li>
+            </ul>
+            <p>I created the journey map by analyzing users' interviews with natural language models. Below example of neutral, negative, and positive comments of real users as classified by the algorithm.</p>
+            <div class="tools">
+              <span>Tools:</span> Python + Hugging Face (NLP) + Inkscape
+            </div>
+            <div class="image-placeholder">
+              [Placeholder for Journey Map diagram showing stages: Login, Set Location, Set Filters, Choose Restaurant, Select the Food, Set Delivery Time, with sentiment analysis dots (green for positive, red for negative)]
+            </div>
+            <div class="quotes">
+              <div class="quote-yellow">"I'm looking for the login, which is usually top right, and there it is."</div>
+              <div class="quote-pink">"I was a little worried that clicking on the back arrow here above would have sent me to a completely different page."</div>
+              <div class="quote-green">"It was actually pretty impressive how quickly the filters filter out what you want."</div>
+            </div>
+            <div class="project-section">
+              <h4>Insights</h4>
+              <p>The login button opened a new page, and participants had to press the 'Back' button to return to the main page and continue their order. Users expect the 'Back' button to return them to the previous page in the history without retaining or using newly entered data. This discrepancy causes confusion.</p>
+            </div>
+            <div class="project-section">
+              <h4>Actionables</h4>
+              <p>Simplifying the transition between login and the main page: Implement a login pop-up that does not replace the entire page but instead overlays the underlying content. Ensure the pop-up displays only the essential fields for login, simplifying the interface while keeping the location selection bar visible on the main screen.</p>
+              <p> </p> <!-- Added space after the last line -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="project">
+        <div class="project-header">
+          <h3>Mixed-method project: improving Virtual Reality experience in cruise prototyping</h3>
+          <span class="toggle-icon">+</span>
+        </div>
+        <div class="project-content">
+          <div class="project-section">
+            <h4>Context</h4>
+            <p>A company specializing in the development of cruise ship interior prototypes aims to utilize virtual reality to improve the identification of design errors compared to traditional 2D drawings and static 3D models. The objective is to leverage virtual reality to enhance error detection during the prototype phase, ensuring a more efficient and accurate design process. However, so far, they have not observed any significant advantages of VR over traditional models.</p>
+          </div>
+          <div class="project-section">
+            <h4>Objective</h4>
+            <p>Minimize design errors detected during technical checks by enabling active exploration in immersive virtual environments.</p>
+          </div>
+          <div class="project-section">
+            <h4>Methodology</h4>
+            <ul>
+              <li>Contextual enquiry</li>
+              <li>A/B testing</li>
+            </ul>
+            <div class="image-placeholder">
+              [Placeholder for VR environment screenshot (virtual corridor of a cruise ship)]
+            </div>
+          </div>
+          <div class="project-section">
+            <h4>Analysis</h4>
+            <h5>Contextual Enquiry</h5>
+            <p style="line-height: 1.2;">Field observations during the use of virtual reality in a real working environment.</p>
+            <p style="line-height: 1.2;">Interviews with technicians to assess their habits and identify barriers to VR adoption (e.g., health concerns that may affect compliance).</p>
+            <h5>Insights</h5>
+            <p>The technicians tended to remain static while using virtual reality, interacting with it similarly to traditional 2D or 3D rendering methods. Consequently, the core advantage of virtual reality—immersion through active interaction—was not fully exploited, resulting in no meaningful improvement over conventional rendering techniques.</p>
+            <h5>Actionables</h5>
+            <p>We encouraged technicians to actively engage with the virtual environment, instructing them to behave as if they were physically present aboard the ship, interacting dynamically with their surroundings. We subsequently evaluated the effectiveness of this intervention.</p>
+            <h5>A/B Test</h5>
+            <p>Analysis with a logistic model (binomial data error detected / error missed).</p>
+            <p>Results show that VR can significantly enhance the detection of design errors, reducing the number of misreported errors.</p>
+            <div class="image-placeholder">
+              [Placeholder for bar chart comparing error percentages (2D, 3D, VR active, VR passive)]
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="project">
+        <div class="project-header">
+          <h3>Quantitative project: increasing the understanding of diagnostic test results</h3>
+          <span class="toggle-icon">+</span>
+        </div>
+        <div class="project-content">
+          <div class="project-section">
+            <h4>Context</h4>
+            <p>During the pandemic, the Ministry wanted to evaluate the public’s understanding of the usefulness of swabs to decide on communication strategies.</p>
+          </div>
+          <div class="project-section">
+            <h4>Objective</h4>
+            <p>Identify critical areas in the public’s understanding of test results for SARS-CoV-2 and their behavioral implications.</p>
+          </div>
+          <div class="project-section">
+            <h4>Secondary Research</h4>
+            <p>Conducted secondary research to identify key areas of interest for the questionnaire.</p>
+            <p><strong>Identified 4 areas of interest:</strong></p>
+            <ol>
+              <li>Understanding the predictive value of the test.</li>
+              <li>Behavioral implications of test results.</li>
+              <li>Perception of the causes of test errors.</li>
+              <li>Personal experiences with COVID-19 and demographic details.</li>
+            </ol>
+          </div>
+          <div class="project-section">
+            <h4> </h4> <!-- Added space before User Types -->
+            <h4>User Types</h4>
+            <p>Targeted general public, aged 18+ years, including Italians and English speakers across various nations.</p>
+          </div>
+          <div class="project-section">
+            <h4>Methodology</h4>
+            <ul>
+              <li>Questionnaires</li>
+              <li>Multivariate tests</li>
+            </ul>
+            <p><strong>Recruitment Online:</strong></p>
+            <ul>
+              <li>Age > 18 years</li>
+              <li>Italians and English speakers</li>
+              <li>500+ questionnaires in various nations</li>
+            </ul>
+            <div class="tools">
+              <span>Tools:</span> Online programming of the questionnaire using Qualtrics and recruiting with Prolific.
+            </div>
+            <div>
+              <p><strong>Item Types:</strong></p>
+              <ul>
+                <li>Multiple choice and Likert scale questions</li>
+                <li>Sliding bars</li>
+                <li>Classification tasks</li>
+                <li>Inclusion of attention controls</li>
+              </ul>
+            </div>
+          </div>
+          <div class="project-section">
+            <h4>Analysis</h4>
+            <ul>
+              <li>Creation of R script to automate database management and statistical analysis</li>
+              <li>Linear and multinomial models, frequency analysis, and association tests</li>
+              <li>Inclusion of covariates: age, gender, education, perceived risk</li>
+            </ul>
+          </div>
+          <div class="project-section">
+            <h4>Insights</h4>
+            <p>People tend to overestimate false positives (the probability that a test returns a positive result for a non-infected person) and underestimate false negatives (the probability that a test returns a negative result for an infected person). This can lead to excessive trust in negative results and inappropriate behaviors (e.g., abandoning precautionary measures).</p>
+          </div>
+          <div class="project-section">
+            <h4>Actionables</h4>
+            <p>Targeted communication interventions should clarify the importance of repeating the test after a negative result, especially in high-prevalence contexts.</p>
+            <p> </p> <!-- Added space at the end -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Domains Toggle
+      const tabItems = document.querySelectorAll('.tab-item');
+      const domainSections = document.querySelectorAll('.domain-section');
+
+      tabItems.forEach(item => {
+        item.addEventListener('click', () => {
+          tabItems.forEach(t => t.classList.remove('active'));
+          domainSections.forEach(d => d.classList.remove('active'));
+          item.classList.add('active');
+          const targetSection = document.getElementById(item.getAttribute('data-target'));
+          if (targetSection) {
+            targetSection.classList.add('active');
+          }
+        });
+      });
+
+      // Projects Accordion
+      document.querySelectorAll('.project-header').forEach(header => {
+        header.addEventListener('click', () => {
+          const content = header.nextElementSibling;
+          header.classList.toggle('active');
+          if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+            content.classList.remove('active');
+          } else {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            content.classList.add('active');
+          }
+        });
+      });
+
+      // Research Flow Interaction
+      const flowSteps = document.querySelectorAll('.flow-step');
+      flowSteps.forEach(step => {
+        step.addEventListener('click', () => {
+          flowSteps.forEach(s => s.classList.remove('active'));
+          step.classList.add('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
