@@ -315,6 +315,30 @@
       white-space: normal;
       word-wrap: break-word;
     }
+    /* New CSS for circular disks in Secondary Research */
+    .project-section .research-disks {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .project-section .research-disks .disk {
+      background: #007BFF;
+      color: #fff;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.8rem;
+      line-height: 1.2;
+      white-space: normal;
+      word-wrap: break-word;
+    }
     .project-section .user-types {
       display: flex;
       gap: 2rem;
@@ -407,11 +431,13 @@
         max-width: 100%;
       }
       .project-section .user-types,
-      .project-section .material-prep {
+      .project-section .material-prep,
+      .project-section .research-disks {
         flex-direction: column;
         gap: 1rem;
       }
-      .project-section .statistics div {
+      .project-section .statistics div,
+      .project-section .research-disks .disk {
         width: 100px;
         height: 100px;
         font-size: 0.7rem;
@@ -548,17 +574,18 @@
             <p>The start up has developed the prototype of a platform similar to Skyscanner but for food delivery, which allows users to find the best offers (prices, delivery times, etc.).</p>
           </div>
           <div class="project-section">
-            <h4>Objective</h4>
+            <h4>Goal</h4>
             <p>Identify the missing or problematic functionalities that influence the user experience of their website.</p>
           </div>
           <div class="project-section">
             <h4>Secondary Research</h4>
-            <div class="statistics">
-              <div>72% of users are under 44 years old</div>
-              <div>61% convenience</div>
-              <div>59% digital payments</div>
-              <div>40% flexibility</div>
-              <div>65% of Gen Z orders food online because it’s economical</div>
+            <p>Few data on who the users of food delivery app are:</p>
+            <div class="research-disks">
+              <div class="disk">72% of users are under 44 years old</div>
+              <div class="disk">61% of the users love the convenience</div>
+              <div class="disk">59% of users love the digital payment option</div>
+              <div class="disk">40% of the users love the flexibility</div>
+              <div class="disk">65% of Gen Z users love that it's cheaper</div>
             </div>
           </div>
           <div class="project-section">
@@ -670,8 +697,8 @@
             <p>A company specializing in the development of cruise ship interior prototypes aims to utilize virtual reality to improve the identification of design errors compared to traditional 2D drawings and static 3D models. The objective is to leverage virtual reality to enhance error detection during the prototype phase, ensuring a more efficient and accurate design process. However, so far, they have not observed any significant advantages of VR over traditional models.</p>
           </div>
           <div class="project-section">
-            <h4>Objective</h4>
-            <p>Minimize design errors detected during technical checks by enabling active exploration in immersive virtual environments.</p>
+            <h4>Goal</h4>
+            <p>Improve design errors detection during technical checks by enabling active exploration in immersive virtual environments.</p>
           </div>
           <div class="project-section">
             <h4>Methodology</h4>
@@ -711,22 +738,22 @@
         <div class="project-content">
           <div class="project-section">
             <h4>Context</h4>
-            <p>During the pandemic, the Ministry wanted to evaluate the public’s understanding of the usefulness of swabs to decide on communication strategies.</p>
+            <p>During the pandemic, the Public Health Minister asked us to assess the public's understanding of the effectiveness of swabs in order to inform communication strategies.</p>
           </div>
           <div class="project-section">
-            <h4>Objective</h4>
+            <h4>Goal</h4>
             <p>Identify critical areas in the public’s understanding of test results for SARS-CoV-2 and their behavioral implications.</p>
           </div>
           <div class="project-section">
             <h4>Secondary Research</h4>
-            <p>Conducted secondary research to identify key areas of interest for the questionnaire.</p>
-            <p><strong>Identified 4 areas of interest:</strong></p>
-            <ol>
-              <li>Understanding the predictive value of the test.</li>
-              <li>Behavioral implications of test results.</li>
-              <li>Perception of the causes of test errors.</li>
-              <li>Personal experiences with COVID-19 and demographic details.</li>
-            </ol>
+            <p>Few data on who the users of food delivery app are:</p>
+            <div class="research-disks">
+              <div class="disk">72% of users are under 44 years old</div>
+              <div class="disk">61% of the users love the convenience</div>
+              <div class="disk">59% of users love the digital payment option</div>
+              <div class="disk">40% of the users love the flexibility</div>
+              <div class="disk">65% of Gen Z users love that it's cheaper</div>
+            </div>
           </div>
           <div class="project-section">
             <h4> </h4> <!-- Added space before User Types -->
